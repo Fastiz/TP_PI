@@ -9,7 +9,7 @@
 #define CANT_PROVINCIAS 24
 #define DIVISION(a, b) ((b)>0?(double)(a)/(b):(b))
 
-char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires",
+/*char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires",
                              "Buenos Aires",
                              "Catamarca",
                              "Cordoba",
@@ -33,7 +33,12 @@ char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires",
                              "Santiago del Estero",
                              "Tucuman",
                              "Tierra del Fuego"
-                            };
+                            }; */
+
+char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires", "Buenos Aires", "Catamarca","Cordoba","Corrientes",
+                             "Chaco", "Chubut", "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza",
+                             "Misiones", "Neuquen", "Rio negro", "Salta", "San Juan", "San Luis", "Santa Cruz",
+                             "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego" };
 
 char * nombreVivienda[] = {"Casa", "Rancho", "Casilla", "Departamento", "Pieza en inquilinato", "Pieza en hotel o pension", "Local no construido para habitacion", "Vivienda movil", "Persona/s viviendo en la calle"};
 
