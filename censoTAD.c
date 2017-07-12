@@ -65,7 +65,7 @@ censoADT nuevoCenso (){
   return censo;
 }
 
-static TnodoDepto ingresarDatoR (TnodoDepto nodo, char *nombreDepto, int analfabeto, int codigoVivienda, int edad, int *flag) {
+static TnodoDepto ingresarDatoR (TnodoDepto nodo, char *nombreDepto, char analfabeto, unsigned char codigoVivienda, unsigned char edad, int *flag) {
   int c;
   if (nodo == NULL || (c = strcmp(nodo->nombreDepto, nombreDepto)) > 0) {
     TnodoDepto aux = malloc (sizeof(*aux));
@@ -97,7 +97,7 @@ static TnodoDepto ingresarDatoR (TnodoDepto nodo, char *nombreDepto, int analfab
   return nodo;
 }
 
-int ingresarDato (censoADT censo, int codigoVivienda, int codigoProvincia, int edad, int analfabeto, char * nombreDepto) {
+int ingresarDato (censoADT censo, unsigned char codigoVivienda, unsigned char codigoProvincia, unsigned char edad, char analfabeto, char * nombreDepto) {
   if(codigoVivienda <= 0 || codigoVivienda > CANT_VIVIENDAS || codigoProvincia <= 0 || codigoProvincia > CANT_PROVINCIAS || (analfabeto != 1 && analfabeto != 0))
     return 0;
   codigoVivienda--;
