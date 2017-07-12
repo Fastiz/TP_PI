@@ -31,18 +31,18 @@ int main(){
 
       if(fgets(linea, 81, stdin) != NULL){
         if(!leerCsv(linea, &edad, &alfabetismo, &codigoVivienda, nombreDepto, &codigoProvincia))
-            printf("Error en la lectura.");
+            printf("Error en la lectura de la linea: %d", i);
 
 
       if(!ingresarDato(censo, codigoVivienda, codigoProvincia, edad, alfabetismo-1, nombreDepto))
-          printf("Error en la linea: %d", i);
+          printf("Error al procesar el dato de la linea: %d", i);
       }
       i++;
     }
 
     int error = 0;
     if( !almacenarCenso(censo, PATH_ALFABETISMO, PATH_PROVINCIA, PATH_DEPARTAMENTO)){
-      printf("Hubo un problema al guardar");
+      printf("Hubo un problema al guardar los archivos");
       error = 1;
     }
 
