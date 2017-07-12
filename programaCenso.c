@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PATH_ALFABETISMO "./alfabetismo.csv"
-#define PATH_PROVINCIA "./provincia.csv"
-#define PATH_DEPARTAMENTO "./departamento.csv"
+#define PATH_ALFABETISMO "./Alfabetismo.csv"
+#define PATH_PROVINCIA "./Provincia.csv"
+#define PATH_DEPARTAMENTO "./Departamento.csv"
 
 #define DEPTO_MAX 74
 
