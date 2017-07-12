@@ -11,12 +11,12 @@
 #define PATH_PROVINCIA "./Resultados/provincia.csv"
 #define PATH_DEPARTAMENTO "./Resultados/departamentos.csv"
 
-int leerCsv(const char * texto, int * edad, int * analfabeto, int * tipoVivienda, char * nombreDepto, int * tipoProvincia);
+int leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char * tipoProvincia);
 
 int main(){
 
-    int edad, alfabetismo, codigoVivienda, codigoProvincia;
-    char nombreDepto[DEPTO_MAX];
+    unsigned char edad, codigoVivienda, codigoProvincia;
+    char nombreDepto[DEPTO_MAX], alfabetismo;
 
     censoADT censo = nuevoCenso();
     if(censo == NULL){
@@ -53,7 +53,7 @@ int main(){
     return 0;
 }
 
-int leerCsv(const char * texto, int * edad, int * analfabeto, int * tipoVivienda, char * nombreDepto, int * tipoProvincia){
+int leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char* tipoProvincia){
   int i = 0, estado = 0, escritura = 0, numero = 0, c;
   while((c=*(texto+i))!=0 && estado < 5 && c != '\n'){
     if(c == ','){
