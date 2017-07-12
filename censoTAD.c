@@ -91,6 +91,7 @@ int ingresarDato (censoADT censo, unsigned char codigoVivienda, unsigned char co
   codigoVivienda--;
   codigoProvincia--;
   int flag = 0;
+  // Si no es letra lo agrego al principio
   if (!isalpha(nombreDepto[0]))
     censo->provincias[codigoProvincia][0] = ingresarDatoR(censo->provincias[codigoProvincia][0], nombreDepto, analfabeto, codigoVivienda, edad, &flag);
   else {
@@ -117,7 +118,7 @@ int almacenarCenso (censoADT censo, char * direccionAlfabetismo, char * direccio
 
   unsigned int habitantesVivienda[CANT_VIVIENDAS] = {0};
   unsigned int analfabetosVivienda[CANT_VIVIENDAS] = {0};
-  unsigned int habitantesProvincia, edadProvincia, analfabetosProvincia;
+  unsigned int habitantesProvincia, analfabetosProvincia, edadProvincia;
   unsigned int habitantesDepto, analfabetosDepto;
 
   /*Se crea un vector que vinculará los códigos de las provincias
@@ -134,8 +135,10 @@ int almacenarCenso (censoADT censo, char * direccionAlfabetismo, char * direccio
     for (int j = 0; j < CANT_INI; j++) {
       TnodoDepto aux = censo->provincias[ordenProvincias[i]][j];
       while (aux != NULL) {
+        // Reinicio la cantidad de habitantes y analfabetas cada vez que recorro una provincia nueva.
         habitantesDepto = 0;
         analfabetosDepto = 0;
+        // Recolecto todos los datos de todos los tipos de vivienda del departamento y los datos del departamento.
         for (int k = 0; k < CANT_VIVIENDAS; k++) {
           habitantesDepto += aux->viviendas[k].habitantes;
           analfabetosDepto += aux->viviendas[k].analfabetos;
@@ -143,16 +146,20 @@ int almacenarCenso (censoADT censo, char * direccionAlfabetismo, char * direccio
           habitantesVivienda[k] += aux->viviendas[k].habitantes;
           analfabetosVivienda[k] += aux->viviendas[k].analfabetos;
         }
+        // Sumo los habitantes y analfabetas de cada departamento a los de la provincia en la que se encuentra.
         habitantesProvincia += habitantesDepto;
         analfabetosProvincia += analfabetosDepto;
+        // Agrego los datos del departamento.
         fprintf(archivoDepartamentos, "%s,%s,%d,%.2f\n", nombreProvincias[ordenProvincias[i]], aux->nombreDepto, habitantesDepto, DIVISION (analfabetosDepto, habitantesDepto));
         aux = aux->sig;
       }
     }
+    // Agrego los datos de la provincia.
     fprintf(archivoProvincias, "%s,%d,%.2f,%.2f\n", nombreProvincias[ordenProvincias[i]], habitantesProvincia, DIVISION(edadProvincia, habitantesProvincia),
                         DIVISION(analfabetosProvincia, habitantesProvincia));
   }
 
+  // Agrego los datos de todos los tipos de vivienda, incluye los datos de todas las provincias y sus departamentos.
   for(int i = 0; i < CANT_VIVIENDAS; i++){
     fprintf(archivoAlfabetismo, "%d,%s,%d,%.2f\n", i+1, nombreVivienda[i], habitantesVivienda[i], DIVISION(analfabetosVivienda[i], habitantesVivienda[i]));
   }
