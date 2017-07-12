@@ -37,12 +37,14 @@ char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires",
 
 char * nombreVivienda[] = {"Casa", "Rancho", "Casilla", "Departamento", "Pieza en inquilinato", "Pieza en hotel o pension", "Local no construido para habitacion", "Vivienda movil", "Persona/s viviendo en la calle"};
 
+/* Es una estructura en la que se almacenan los datos de una vivienda. */
 typedef struct vivienda {
   unsigned int habitantes;
   unsigned int analfabetos;
   unsigned long int sumaedades;
 } vivienda;
 
+/* Estructura que contendra el nombre del departamento y los datos de cada tipo de vivienda en ese departamento */
 typedef struct nodoDepto {
   char *nombreDepto;
   struct vivienda viviendas[CANT_VIVIENDAS];
@@ -51,6 +53,9 @@ typedef struct nodoDepto {
 
 typedef nodoDepto * TnodoDepto;
 
+/* Estructura que contiene una matriz de punteros a la estructura nodoDepto, las filas son las provincias y las columnas son
+  las letras con la que empiezan los departamentos (y la primera columna que no es letra), se usa para hacer una lista
+  con todos los departamentos que comienzan con cada letra para agilizar el proceso. */
 typedef struct censoCDT {
   TnodoDepto provincias[CANT_PROVINCIAS][CANT_INI];
 } censoCDT;
