@@ -5,10 +5,11 @@
 
 #define PATH_ALFABETISMO "./alfabetismo.csv"
 #define PATH_PROVINCIA "./provincia.csv"
-#define PATH_DEPARTAMENTO "./departamentos.csv"
+#define PATH_DEPARTAMENTO "./departamento.csv"
 
 #define DEPTO_MAX 74
 
+//Lee una linea en formato cvs y la descompone en campos. Cumple el rol de fscanf.
 void leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char * tipoProvincia);
 
 int main(){
