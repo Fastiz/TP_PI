@@ -11,7 +11,7 @@
 
 char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires", "Buenos Aires", "Catamarca", "Cordoba", "Corrientes",
                              "Chaco", "Chubut", "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza",
-                             "Misiones", "Neuquen", "Rio negro", "Salta", "San Juan", "San Luis", "Santa Cruz",
+                             "Misiones", "Neuquen", "Rio Negro", "Salta", "San Juan", "San Luis", "Santa Cruz",
                              "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego" };
 
 char * nombreVivienda[] = {"Casa", "Rancho", "Casilla", "Departamento", "Pieza en inquilinato", "Pieza en hotel o pension",
@@ -49,11 +49,11 @@ static int cmp (const int * a, const int * b) {
 }
 
 static int strcmpMin (char *s1, char *s2) {
-  for (int i = 0, s1[i] != '\0' && s2[i] != '\0'; i++) {
-    if (tolower(s1[i]) != tolower(s2[i]))
-      return tolower(s1[i]) - tolower(s2[i]);
+  for (; *s1 == *s2 || *s1 == tolower(*s2) || *s2 == tolower(*s1); s1++, s2++) {
+    if (*s1 == '\0')
+      return tolower(*s1) - tolower(*s2);
   }
-  return tolower(s1[i]) - tolower(s2[i]);
+  return tolower(*s1) - tolower(*s2);
 }
 
 censoADT nuevoCenso (){
@@ -63,7 +63,7 @@ censoADT nuevoCenso (){
 
 static TnodoDepto ingresarDatoR (TnodoDepto nodo, char *nombreDepto, char analfabeto, unsigned char codigoVivienda, unsigned char edad, int *flag) {
   int c;
-  if (nodo == NULL || (c = strcmp(nodo->nombreDepto, nombreDepto)) > 0) {
+  if (nodo == NULL || (c = strcmpMin(nodo->nombreDepto, nombreDepto)) > 0) {
     TnodoDepto aux = malloc (sizeof(*aux));
     if (aux == NULL)
       return nodo;
