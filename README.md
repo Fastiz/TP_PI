@@ -2,7 +2,7 @@
 
 1) Compilar:
 
-    gcc programaCenso.c censoTAD.c -o programaCenso-Wall -pedantic -std=c99
+    gcc programaCenso.c censoTAD.c -o programaCenso -Wall -pedantic -std=c99
 
 2) Correr el programa:
 
