@@ -9,33 +9,7 @@
 #define CANT_PROVINCIAS 24
 #define DIVISION(a, b) ((b)>0?(double)(a)/(b):(b))
 
-/*char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires",
-                             "Buenos Aires",
-                             "Catamarca",
-                             "Cordoba",
-                             "Corrientes",
-                             "Chaco",
-                             "Chubut",
-                             "Entre Rios",
-                             "Formosa",
-                             "Jujuy",
-                             "La Pampa",
-                             "La Rioja",
-                             "Mendoza",
-                             "Misiones",
-                             "Neuquen",
-                             "Rio negro",
-                             "Salta",
-                             "San Juan",
-                             "San Luis",
-                             "Santa Cruz",
-                             "Santa Fe",
-                             "Santiago del Estero",
-                             "Tucuman",
-                             "Tierra del Fuego"
-                            }; */
-
-char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires", "Buenos Aires", "Catamarca","Cordoba","Corrientes",
+char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires", "Buenos Aires", "Catamarca", "Cordoba", "Corrientes",
                              "Chaco", "Chubut", "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza",
                              "Misiones", "Neuquen", "Rio negro", "Salta", "San Juan", "San Luis", "Santa Cruz",
                              "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego" };
@@ -49,7 +23,8 @@ typedef struct vivienda {
   unsigned long int sumaedades;
 } vivienda;
 
-/* Estructura que contendra el nombre del departamento y los datos de cada tipo de vivienda en ese departamento */
+/* Estructura que contendra el nombre del departamento y un vector de estructuras de tipo vivienda conlos datos de cada
+  tipo de vivienda en ese departamento */
 typedef struct nodoDepto {
   char *nombreDepto;
   struct vivienda viviendas[CANT_VIVIENDAS];
