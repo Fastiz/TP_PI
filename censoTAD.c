@@ -24,8 +24,8 @@ typedef struct vivienda {
   unsigned long int sumaedades;
 } vivienda;
 
-/* Estructura que contendra el nombre del departamento y un vector de estructuras de tipo vivienda conlos datos de cada
-  tipo de vivienda en ese departamento */
+/* Estructura que contiene el nombre del departamento y un vector con la informacion de cada tipo de vivienda ubicada dentro
+del departamento. */
 typedef struct nodoDepto {
   char *nombreDepto;
   struct vivienda viviendas[CANT_VIVIENDAS];
@@ -34,8 +34,10 @@ typedef struct nodoDepto {
 
 typedef nodoDepto * TnodoDepto;
 
-/* Estructura que contiene una matriz de punteros a la estructura nodoDepto, las filas son las provincias y las columnas son
-  las letras con la que empiezan los departamentos (y la primera columna que no es letra), se usa para hacer una lista
+/* Estructura que contiene una matriz de punteros a la estructura nodoDepto, cada espacio en la matriz contiene
+  un puntero a una estructura nodo de una lista que contiene los departamentos ubicados en la misma provincia y que 
+  comienzan con la misma letra. Las filas de la matriz son las provincias y las columnas son las letras con la que 
+  empiezan los departamentos (y la primera columna que no es letra). Se usa para hacer una lista
   con todos los departamentos que comienzan con cada letra para agilizar el proceso. */
 typedef struct censoCDT {
   TnodoDepto provincias[CANT_PROVINCIAS][CANT_INI];
