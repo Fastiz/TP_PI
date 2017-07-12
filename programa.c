@@ -7,7 +7,6 @@
 #define DEPTO_MAX 73
 #define CANT_CAMPOS 5
 
-#define PATH_CENSO "./censoXXL.csv"
 #define PATH_ALFABETISMO "./Resultados/alfabetismo.csv"
 #define PATH_PROVINCIA "./Resultados/provincia.csv"
 #define PATH_DEPARTAMENTO "./Resultados/departamentos.csv"
