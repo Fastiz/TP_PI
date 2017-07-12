@@ -7,7 +7,9 @@
 #define PATH_PROVINCIA "./provincia.csv"
 #define PATH_DEPARTAMENTO "./departamentos.csv"
 
-int leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char * tipoProvincia);
+#define DEPTO_MAX 74
+
+void leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char * tipoProvincia);
 
 int main(){
 
@@ -25,33 +27,31 @@ int main(){
     while(!feof(stdin)){
 
       if(fgets(linea, 81, stdin) != NULL){
-        if(!leerCsv(linea, &edad, &alfabetismo, &codigoVivienda, nombreDepto, &codigoProvincia))
-            printf("Error en la lectura de la linea: %d", i);
+        leerCsv(linea, &edad, &alfabetismo, &codigoVivienda, nombreDepto, &codigoProvincia);
 
-
-      if(!ingresarDato(censo, codigoVivienda, codigoProvincia, edad, alfabetismo-1, nombreDepto))
-          printf("Error al procesar el dato de la linea: %d", i);
+        if(!ingresarDato(censo, codigoVivienda, codigoProvincia, edad, alfabetismo-1, nombreDepto)){
+            printf("Error al procesar el dato de la linea: %d", i);
+            liberarCenso(censo);
+            return 1;
+        }
       }
       i++;
     }
 
-    int error = 0;
     if( !almacenarCenso(censo, PATH_ALFABETISMO, PATH_PROVINCIA, PATH_DEPARTAMENTO)){
       printf("Hubo un problema al guardar los archivos");
-      error = 1;
+      liberarCenso(censo);
+      return 1;
     }
 
     liberarCenso(censo);
 
-    if(error)
-      return 1;
-
     return 0;
 }
 
-int leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char* tipoProvincia){
+void leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigned char * tipoVivienda, char * nombreDepto, unsigned char* tipoProvincia){
   int i = 0, estado = 0, escritura = 0, numero = 0, c;
-  while((c=*(texto+i))!=0 && estado < 5 && c != '\n'){
+  while((c=*(texto+i))!=0 && c != '\n'){
     if(c == ','){
       switch(estado){
         case 0:
@@ -69,21 +69,15 @@ int leerCsv(const char * texto, unsigned char * edad, char * analfabeto, unsigne
       estado+=1;
       numero=0;
 
-      //printf("Cambio %d a %d\n", i, cambio);
     }else if(estado == 3){
       *(nombreDepto + escritura) = c;
         escritura++;
     }else{
-      if(isdigit(c)){
         numero*=10;
         numero += c-'0';
-      }else{
-        return 0;
-      }
     }
     i++;
   }
   *(nombreDepto + escritura) = '\0';
   *tipoProvincia = numero;
-  return 1;
 }
