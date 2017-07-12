@@ -14,7 +14,8 @@ char * nombreProvincias[] = {"Ciudad Autonoma de Buenos Aires", "Buenos Aires", 
                              "Misiones", "Neuquen", "Rio negro", "Salta", "San Juan", "San Luis", "Santa Cruz",
                              "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego" };
 
-char * nombreVivienda[] = {"Casa", "Rancho", "Casilla", "Departamento", "Pieza en inquilinato", "Pieza en hotel o pension", "Local no construido para habitacion", "Vivienda movil", "Persona/s viviendo en la calle"};
+char * nombreVivienda[] = {"Casa", "Rancho", "Casilla", "Departamento", "Pieza en inquilinato", "Pieza en hotel o pension",
+                           "Local no construido para habitacion", "Vivienda movil", "Persona/s viviendo en la calle"};
 
 /* Es una estructura en la que se almacenan los datos de una vivienda. */
 typedef struct vivienda {
