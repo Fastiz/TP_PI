@@ -91,7 +91,7 @@ int ingresarDato (censoADT censo, unsigned char codigoVivienda, unsigned char co
   codigoVivienda--;
   codigoProvincia--;
   int flag = 0;
-  // Si no es letra lo agrego al principio
+  // Si el primer caracter no es una letra lo agrego al principio.
   if (!isalpha(nombreDepto[0]))
     censo->provincias[codigoProvincia][0] = ingresarDatoR(censo->provincias[codigoProvincia][0], nombreDepto, analfabeto, codigoVivienda, edad, &flag);
   else {
