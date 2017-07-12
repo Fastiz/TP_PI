@@ -23,7 +23,7 @@ int main(){
     }
 
     char linea[81];
-    int i = 1;
+    unsigned int i = 1;
     while(!feof(stdin)){
 
       if(fgets(linea, 81, stdin) != NULL){
