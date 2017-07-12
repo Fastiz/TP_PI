@@ -43,12 +43,12 @@ typedef struct censoCDT {
   TnodoDepto provincias[CANT_PROVINCIAS][CANT_INI];
 } censoCDT;
 
-/*Función auxiliar para ordenar las provincias*/
+/* Función auxiliar para ordenar las provincias*/
 static int cmp (const int * a, const int * b) {
   return strcmp(nombreProvincias[*a], nombreProvincias[*b]);
 }
 
-/* Función auxiliar utilizada para ordenar los departamentos alfabeticamente, no se utiliza strcmp porque existen casos
+/* Función auxiliar utilizada para ordenar los departamentos alfabéticamente, no se utiliza strcmp porque existen casos
   particulares en los que se compara una mayúscula con una minúscula y strcmp no ordena de forma correcta. */
 static int strcmpMin (char *s1, char *s2) {
   for (; *s1 == *s2 || *s1 == tolower(*s2) || *s2 == tolower(*s1); s1++, s2++) {
