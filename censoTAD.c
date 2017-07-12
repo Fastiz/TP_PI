@@ -138,7 +138,7 @@ int almacenarCenso (censoADT censo, char * direccionAlfabetismo, char * direccio
         // Reinicio la cantidad de habitantes y analfabetas cada vez que recorro una provincia nueva.
         habitantesDepto = 0;
         analfabetosDepto = 0;
-        // Recolecto todos los datos de todos los tipos de vivienda del departamento y los datos del departamento.
+        // Recolecto todos los datos de todos los tipos de viviendas del departamento y los datos del departamento.
         for (int k = 0; k < CANT_VIVIENDAS; k++) {
           habitantesDepto += aux->viviendas[k].habitantes;
           analfabetosDepto += aux->viviendas[k].analfabetos;
