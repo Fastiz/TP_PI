@@ -121,8 +121,8 @@ int almacenarCenso (censoADT censo, char * direccionAlfabetismo, char * direccio
   unsigned int habitantesProvincia, analfabetosProvincia, edadProvincia;
   unsigned int habitantesDepto, analfabetosDepto;
 
-  /*Se crea un vector que vinculará los códigos de las provincias
-  respecto del orden alfabético de las mismas*/
+  /* Se crea un vector que vinculará los códigos de las provincias
+  respecto del orden alfabético de las mismas. */
   int ordenProvincias[CANT_PROVINCIAS];
   for (int i = 0; i < CANT_PROVINCIAS; i++)
     ordenProvincias[i] = i;
