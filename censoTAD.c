@@ -48,12 +48,12 @@ static int cmp (const int * a, const int * b) {
   return strcmp(nombreProvincias[*a], nombreProvincias[*b]);
 }
 
-static strcmpMin (char *s1, char *s2) {
+static int strcmpMin (char *s1, char *s2) {
   for (int i = 0, s1[i] != '\0' && s2[i] != '\0'; i++) {
-    if (s1[i] != s2[i])
-      return *s1 - *s2;
+    if (tolower(s1[i]) != tolower(s2[i]))
+      return tolower(s1[i]) - tolower(s2[i]);
   }
-  return *s1 - *s2;
+  return tolower(s1[i]) - tolower(s2[i]);
 }
 
 censoADT nuevoCenso (){
