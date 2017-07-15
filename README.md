@@ -1,4 +1,4 @@
-# TRABAJO PRACTICO PI (1
+# TRABAJO PRACTICO PI
 
 1) Compilar:
 
